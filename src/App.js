@@ -22,16 +22,11 @@ class App extends Component {
       names: ["child", "adult", "infant"]
     };
 
-    // To overwrite the ()=> binding in the child component and access this component's state
-    //this.handleOnChangeDropdown = this.handleOnChangeDropdown.bind(this);
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
   
   handleDropdownChange(breakdown, available) {
-    this.setState({
-      breakdown,
-      available
-    });
+    this.setState({ breakdown, available });
   }
 
   /**

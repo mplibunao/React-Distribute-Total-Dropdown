@@ -11,7 +11,7 @@ class DistributeTotalDropdown extends React.Component {
     // Intercept the event, compute the new values for state and pass back to parent managing the state
     handleOnChangeDropdown(event, name) {
         // Get current state from props
-        const { available, breakdown, total, onChange } = this.props;
+        const { breakdown, total, onChange } = this.props;
 
         const newBreakdown = {
             ...breakdown,
