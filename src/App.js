@@ -23,35 +23,14 @@ class App extends Component {
     };
 
     // To overwrite the ()=> binding in the child component and access this component's state
-    this.handleOnChangeDropdown = this.handleOnChangeDropdown.bind(this);
+    //this.handleOnChangeDropdown = this.handleOnChangeDropdown.bind(this);
+    this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
   
-  handleOnChangeDropdown(event, name) {
-    // Get current state
-    const { available, breakdown, total } = this.state;
+  handleDropdownChange(breakdown, available) {
     this.setState({
-      breakdown: {
-        ...breakdown,
-        [name]: event.target.value
-      }
-    });
-    
-    this.setState((prevState, props) => {
-      const { breakdown, total } = prevState;
-      const breakdownArr =  Object.keys(breakdown);
-
-      const totalBreakdown = breakdownArr.reduce((acc, key) => {
-        return acc += Number(breakdown[key]);
-      }, 0);
-
-      // Formula for available
-      // total - totalBreakdown + breakdown[name]
-      const newAvailable = breakdownArr.reduce((acc, key) => {
-        acc[key] = Number(total) - Number(totalBreakdown) + Number(breakdown[key]);
-        return acc;
-      }, {});
-
-      return { available: newAvailable };
+      breakdown,
+      available
     });
   }
 
@@ -75,7 +54,7 @@ class App extends Component {
             breakdown={this.state.breakdown}
             available={this.state.available}
             names={this.state.names}
-            onChange={this.handleOnChangeDropdown}
+            onChange={this.handleDropdownChange}
           />
         </div>
       </div>
