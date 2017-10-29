@@ -29,8 +29,6 @@ class App extends Component {
   handleOnChangeDropdown(event, name) {
     // Get current state
     const { available, breakdown, total } = this.state;
-    console.log('name: ', name);
-    console.log('event: ', event.target.value);
     this.setState({
       breakdown: {
         ...breakdown,
@@ -53,7 +51,6 @@ class App extends Component {
         return acc;
       }, {});
 
-      console.log('newAvailable: ', newAvailable);
       return { available: newAvailable };
     });
   }
