@@ -38,14 +38,24 @@ class App extends Component {
       }
     });
     
-    const totalBreakdown = Object.keys(this.state.breakdown).reduce((total, key) => {
-      return total += this.state.breakdown[key];
-    }, 0);
+    this.setState((prevState, props) => {
+      const { breakdown, total } = prevState;
+      const breakdownArr =  Object.keys(breakdown);
 
-    console.log('totalBreakdown: ', totalBreakdown);
+      const totalBreakdown = breakdownArr.reduce((acc, key) => {
+        return acc += Number(breakdown[key]);
+      }, 0);
 
-    // Formula for available
-    // total - totalBreakdown + breakdown[name]
+      // Formula for available
+      // total - totalBreakdown + breakdown[name]
+      const newAvailable = breakdownArr.reduce((acc, key) => {
+        acc[key] = Number(total) - Number(totalBreakdown) + Number(breakdown[key]);
+        return acc;
+      }, {});
+
+      console.log('newAvailable: ', newAvailable);
+      return { available: newAvailable };
+    });
   }
 
   /**
