@@ -7,7 +7,7 @@ class Dropdown extends React.Component {
     }
 
     render() {
-        const { available, breakdown, name } = this.props;
+        const { available, breakdown, name, onChange } = this.props;
         const availableArray = Array(available + 1).fill(null);
         
         const options = availableArray.map((option, i) => {
@@ -18,7 +18,7 @@ class Dropdown extends React.Component {
             
         return (
             <FormGroup className="col-md-6">
-                <FormControl componentClass="select" value={breakdown} >
+                <FormControl componentClass="select" value={breakdown} onChange={(event) => onChange(event, name)}>
                     {options}
                 </FormControl>
             </FormGroup>

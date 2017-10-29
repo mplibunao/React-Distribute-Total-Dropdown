@@ -25,9 +25,10 @@ class App extends Component {
     this.handleOnChangeDropdown = this.handleOnChangeDropdown.bind(this);
   }
   
-  handleOnChangeDropdown(name, event) {
-    console.log('event: ', event.target.value);
+  handleOnChangeDropdown(event, name) {
     console.log('name: ', name);
+    console.log('event: ', event.target.value);
+    //console.log('name: ', name);
     
   }
 
@@ -51,7 +52,7 @@ class App extends Component {
             breakdown={this.state.breakdown}
             available={this.state.available}
             names={this.state.names}
-            onChange={}
+            onChange={this.handleOnChangeDropdown}
           />
         </div>
       </div>
