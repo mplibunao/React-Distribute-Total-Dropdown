@@ -18,10 +18,18 @@ class App extends Component {
         child: 10,
         adult: 10,
         infant: 10
-      }
-    }
+      },
+      names: ["child", "adult", "infant"]
+    };
+
+    this.handleOnChangeDropdown = this.handleOnChangeDropdown.bind(this);
   }
   
+  handleOnChangeDropdown(name, event) {
+    console.log('event: ', event.target.value);
+    console.log('name: ', name);
+    
+  }
 
   /**
    * Name
@@ -30,7 +38,6 @@ class App extends Component {
    * Available
    */
   render() {
-    const names = ["child", "adult", "infant"];
     return (
       <div className="App">
         <header className="App-header">
@@ -43,7 +50,8 @@ class App extends Component {
             total={this.state.total}
             breakdown={this.state.breakdown}
             available={this.state.available}
-            names={names}
+            names={this.state.names}
+            onChange={}
           />
         </div>
       </div>
