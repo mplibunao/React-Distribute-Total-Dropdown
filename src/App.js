@@ -21,8 +21,6 @@ class App extends Component {
       },
       names: ["child", "adult", "infant"]
     };
-
-    this.handleOnChangeDropdown = this.handleOnChangeDropdown.bind(this);
   }
   
   handleOnChangeDropdown(event, name) {
