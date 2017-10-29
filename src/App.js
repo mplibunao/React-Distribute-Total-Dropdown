@@ -22,12 +22,13 @@ class App extends Component {
       names: ["child", "adult", "infant"]
     };
 
+    // To overwrite the ()=> binding in the child component and access this component's state
     this.handleOnChangeDropdown = this.handleOnChangeDropdown.bind(this);
   }
   
   handleOnChangeDropdown(event, name) {
     // Get current state
-    const { available, breakdown } = this.state;
+    const { available, breakdown, total } = this.state;
     console.log('name: ', name);
     console.log('event: ', event.target.value);
     this.setState({
@@ -36,8 +37,15 @@ class App extends Component {
         [name]: event.target.value
       }
     });
-    //console.log('name: ', name);
     
+    const totalBreakdown = Object.keys(this.state.breakdown).reduce((total, key) => {
+      return total += this.state.breakdown[key];
+    }, 0);
+
+    console.log('totalBreakdown: ', totalBreakdown);
+
+    // Formula for available
+    // total - totalBreakdown + breakdown[name]
   }
 
   /**
