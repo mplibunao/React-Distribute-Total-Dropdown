@@ -8,20 +8,20 @@ class Dropdown extends React.Component {
 
     render() {
         const { available, breakdown, name } = this.props;
-        const availableArray = Array(available).fill(null);
+        const availableArray = Array(available + 1).fill(null);
         
-        const dropdown = availableArray.map(option => {
+        const options = availableArray.map((option, i) => {
             return (
-                <FormGroup className="col-md-6">
-                    <FormControl componentClass="select">
-                        <option>0</option>
-                    </FormControl>
-                </FormGroup>
+                <option>{i}</option>
             );
         });
             
         return (
-            {dropdown}
+            <FormGroup className="col-md-6">
+                <FormControl componentClass="select" value={breakdown} >
+                    {options}
+                </FormControl>
+            </FormGroup>
         );
     }
 }

@@ -9,11 +9,15 @@ class DistributeTotalDropdown extends React.Component {
     render() {
         const { breakdown, available, names } = this.props;
         const dropdowns = names.map(name => {
-            <Dropdown
-                name={name}
-                breakdown={breakdown[name]}
-                available={available[name]}
-            />
+            console.log('available[name]: ', available[name]);
+            console.log('breakdown[name]: ', breakdown[name]);
+            return (
+                <Dropdown
+                    name={name}
+                    breakdown={breakdown[name]}
+                    available={available[name]}
+                />
+            );
         });
 
         return (
