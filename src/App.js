@@ -21,11 +21,21 @@ class App extends Component {
       },
       names: ["child", "adult", "infant"]
     };
+
+    this.handleOnChangeDropdown = this.handleOnChangeDropdown.bind(this);
   }
   
   handleOnChangeDropdown(event, name) {
+    // Get current state
+    const { available, breakdown } = this.state;
     console.log('name: ', name);
     console.log('event: ', event.target.value);
+    this.setState({
+      breakdown: {
+        ...breakdown,
+        [name]: event.target.value
+      }
+    });
     //console.log('name: ', name);
     
   }
